@@ -1,6 +1,7 @@
 Template.Menu.events({
 	'click .c-menu__players-item': function(ev) {
-		$('.js-challenge').removeClass('is-visible');
-		$(ev.currentTarget).find('.js-challenge').addClass('is-visible');
+		var target = $(ev.currentTarget).find('.js-challenge');
+		$('.js-challenge').not(target).removeClass('is-visible');
+		target.toggleClass('is-visible');
 	}
 });
