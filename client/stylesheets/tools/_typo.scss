@@ -1,0 +1,16 @@
+$base-font-size: $typecsset-base-font-size;
+$base-line-height: $typecsset-base-line-height;
+$magic-number: $typecsset-magic-number;
+$magic-ratio: $typecsset-magic-ratio;
+
+@mixin font-size($font-size, $line-height: true) {
+	@include typecsset-font-size($font-size, $line-height);
+}
+
+.u-text-center { text-align: center; }
+.u-text-left { text-align: left; }
+.u-text-right { text-align: right; }
+
+.u-text-red { color: #ca0000 !important; }
+
+.u-text-capitalize { text-transform: capitalize; }

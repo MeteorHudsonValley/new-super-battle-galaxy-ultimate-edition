@@ -1,0 +1,15 @@
+h1, h2, h3, h4, h5, h6 {
+	color: lighten(map-get($colors, bodyText), 15%);
+	font-family: map-get($fonts, sans);
+}
+
+::selection 	 {
+	background-color: map-get($colors, selection);
+	color: #fff;
+	text-shadow: none;
+}
+::-moz-selection {
+	background-color: map-get($colors, selection);
+	color: #fff;
+	text-shadow: none;
+}

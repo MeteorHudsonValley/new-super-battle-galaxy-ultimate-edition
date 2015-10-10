@@ -1,0 +1,45 @@
+.o-title {
+	@include font-size(24px, false);
+	color: map-get($colors, bodyText);
+	letter-spacing: 2px;
+	line-height: 1.125;
+	@include sizing(margin-bottom, 1);
+	text-transform: uppercase;
+
+	@include media('>md') {
+		@include font-size(28px, false);
+	}
+}
+
+.o-intro {
+	color: map-get($colors, bodyText);
+	font-family: map-get($fonts, serif);
+	@include font-size(20px, false);
+	line-height: 1.5;
+	margin: 0 auto;
+	max-width: 900px;
+}
+
+.o-heading {
+	color: map-get($colors, bodyText);
+	@include font-size(28px, false);
+	margin-bottom: 0;
+}
+
+.o-subheading {
+	color: map-get($colors, ltText);
+	@include font-size(16px, false);
+	@include sizing(margin-bottom, 2);
+}
+
+.o-auxiliary__title {
+	color: map-get($colors, bodyText);
+	@include font-size(16px, false);
+	@include sizing(margin-bottom, .25);
+	text-transform: uppercase;
+}
+
+.o-auxiliary__body {
+	color: map-get($colors, ltText);
+	@include font-size(16px, false);
+}

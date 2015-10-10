@@ -1,0 +1,11 @@
+.o-island,
+%o-island {
+	@include sizing(margin-bottom);
+	@include sizing(padding, .5);
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	box-shadow: 0px 1px 2px 0px transparentize(#000, .9);
+	display: inline-block;
+}
+.o-island--block { display: block; }

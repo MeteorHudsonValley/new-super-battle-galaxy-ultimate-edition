@@ -1,0 +1,51 @@
+.sweet-alert {
+    h2 {
+        font-size: 24px;
+        margin: 0 0 .5em;
+        text-transform: uppercase;
+    }
+    p {
+        font-family: map-get($fonts, serif);
+        margin-bottom: 2em;
+    }
+
+    fieldset { display: none; }
+
+    button {
+        @extend .o-btn;
+        margin-top: 0;
+        margin-bottom: .5em;
+        width: 100%;
+
+        &:last-child { margin-bottom: 0; }
+
+        @include media('>md') {
+            margin-bottom: 0;
+            width: 40%;
+        }
+
+        &.confirm {
+            @extend .o-btn--green;
+        }
+    }
+}
+
+ul.notifications {
+	position: fixed;
+}
+
+li.notification {
+	box-shadow: 0 1px 4px transparentize(#000, .85);
+	text-shadow: 0 -1px 1px transparentize(#000, .85);
+
+    &.success {
+    	background-color: map-get($colors, 'buttonGreen');
+    }
+
+    .title {
+    	font-family: map-get($fonts, sans);
+    	font-size: 15px;
+    	text-transform: uppercase;
+    	letter-spacing: .025em;
+    }
+}

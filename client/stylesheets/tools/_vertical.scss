@@ -1,0 +1,9 @@
+.u-vertical-center-container,
+%u-vertical-center-container { position: relative; }
+
+.u-vertical-center,
+%u-vertical-center {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}

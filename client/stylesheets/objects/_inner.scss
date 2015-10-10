@@ -1,0 +1,13 @@
+.o-inner {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: $site-max-width;
+	@include sizing(padding-left);
+	@include sizing(padding-right);
+	@include clearfix();
+
+	@include media('>sm') {
+		@include sizing(padding-left, 2);
+		@include sizing(padding-right, 2);
+	}
+}

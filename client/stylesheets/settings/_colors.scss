@@ -1,0 +1,31 @@
+$colors: (
+	pageBgr: #293033,
+	contentBgr: #f8f8f8,
+	bodyText: #293033,
+	ltText: #56656c,
+	tan: #f0ebe8,
+
+	ltGray: #ddd,
+
+	selection: #008FCC,
+
+	link: #008FCC,
+	linkHover: lighten(#008FCC, 5%),
+	linkActive: darken(#008FCC, 5%),
+
+	buttonRed: #D12B3B,
+	buttonGreen: #58b558,
+	buttonYellow: #FFC500,
+	buttonBlue: #008FCC,
+	buttonTwitter: #55acee,
+	buttonFacebook: #3b5998
+);
+
+$buttons: (
+	'red': map-get($colors, 'buttonRed'),
+	'green': map-get($colors, 'buttonGreen'),
+	'yellow': map-get($colors, 'buttonYellow'),
+	'blue': map-get($colors, 'buttonBlue'),
+	'twitter': map-get($colors, 'buttonTwitter'),
+	'facebook': map-get($colors, 'buttonFacebook')
+);

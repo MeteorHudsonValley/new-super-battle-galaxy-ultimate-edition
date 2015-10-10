@@ -1,0 +1,9 @@
+.o-block {
+	float: left;
+	width: 100%;
+	@extend .u-clearfix;
+}
+
+.o-block__img {
+	margin: 0 auto;
+}

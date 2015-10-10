@@ -1,0 +1,6 @@
+hr {
+	border-color: map-get($colors, ltGray);
+	border-style: solid none none;
+	border-width: 2px;
+	@extend %typecsset-vertical-rhythm;
+}

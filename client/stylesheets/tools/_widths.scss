@@ -1,0 +1,32 @@
+.u-half { width: 50% !important; }
+.u-third { width: 33.33333% !important; }
+.u-fourth { width: 25% !important; }
+.u-fifth { width: 20% !important; }
+
+@include media('>sm') {
+	.u-sm-half { width: 50% !important; }
+	.u-sm-third { width: 33.33333% !important; }
+	.u-sm-fourth { width: 25% !important; }
+	.u-sm-fifth { width: 20% !important; }
+}
+
+@include media('>md') {
+	.u-md-half { width: 50% !important; }
+	.u-md-third { width: 33.33333% !important; }
+	.u-md-fourth { width: 25% !important; }
+	.u-md-fifth { width: 20% !important; }
+}
+
+@include media('>lg') {
+	.u-lg-half { width: 50% !important; }
+	.u-lg-third { width: 33.33333% !important; }
+	.u-lg-fourth { width: 25% !important; }
+	.u-lg-fifth { width: 20% !important; }
+}
+
+@include media('>xl') {
+	.u-xl-half { width: 50%; }
+	.u-xl-third { width: 33.33333%; }
+	.u-xl-fourth { width: 25%; }
+	.u-xl-fifth { width: 20%; }
+}

@@ -1,0 +1,13 @@
+.o-list-bare,
+%o-list-bare {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	@extend %u-clearfix;
+}
+
+.o-list-horiz {
+	li {
+		float: left;
+	}
+}

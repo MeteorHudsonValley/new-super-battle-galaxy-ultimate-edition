@@ -1,0 +1,8 @@
+.o-band {
+	@include sizing(padding-top, $layout-padding-unitless);
+	@include sizing(padding-bottom, $layout-padding-unitless);
+}
+
+.o-band--dark {
+	background-color: map-get($colors, tan);
+}

@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'gameboy';
+    src: url('fonts/early_gameboy-webfont.eot');
+    src: url('fonts/early_gameboy-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/early_gameboy-webfont.woff2') format('woff2'),
+         url('fonts/early_gameboy-webfont.woff') format('woff'),
+         url('fonts/early_gameboy-webfont.ttf') format('truetype'),
+         url('fonts/early_gameboy-webfont.svg#early_gameboyregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+$fonts: (
+	serif: #{'gameboy', Georgia, Times, 'Times New Roman', serif},
+	sans: #{'gameboy', 'Helvetica Neue', Helvetica, Arial, sans-serif}
+);

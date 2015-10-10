@@ -1,0 +1,132 @@
+.o-tile-container {
+	float: left;
+	@include sizing(margin-bottom);
+	text-align: left;
+	width: 100%;
+
+	&:last-child { margin-bottom: 0; }
+
+	@include media('>md') {
+		&:nth-of-type(even) { padding-left: .5em; }
+		&:nth-of-type(odd) { padding-right: .5em; }
+	}
+
+	@include media('>lg') {
+		&:nth-of-type(3n-2) {
+			padding-left: 0;
+			padding-right: .66667em;
+		}
+		&:nth-of-type(3n-1) {
+			padding-left: .33333em;
+			padding-right: .33333em;	
+		}
+		&:nth-of-type(3n-0) {
+			padding-left: .66667em;
+			padding-right: 0;
+		}
+	}
+}
+
+.o-tile {
+	background-color: #fff;
+	border: 1px map-get($colors, tan) solid;
+	border-radius: 3px;
+	box-shadow: 0 1px 1px transparentize(#000, .95);
+	display: block;
+	position: relative;
+	width: 100%;
+
+	&:before {
+		content: '';
+		display: block;
+		padding-bottom: 60%;
+	}
+
+	@include media('>md') {
+		&:hover {
+			.o-tile__img {
+				transform: scale(1.125);
+			}
+		}
+	}
+}
+
+.o-tile--empty {
+	.o-tile__img-container:after { display: none; }
+	.o-tile__img {
+		background-color: map-get($colors, tan);
+		background-image: url('blank.png');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 64px;
+	}
+	.o-tile__title {
+		color: #777;
+		text-shadow: none;
+	}
+
+	&:hover {
+		.o-tile__img {
+			transform: none;
+		}
+	}
+}
+
+.o-tile__img-container {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	bottom: 4px;
+	left: 4px;
+	overflow: hidden;
+
+	&:after {
+		background: linear-gradient(180deg, transparentize(#000, 1), transparentize(#000, .35));
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+}
+.o-tile__img {
+	transition: all 1s ease-out;
+	background-color: map-get($colors, tan);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.o-tile__meta {
+	background-color: map-get($colors, tan);
+	border-radius: 3px;
+	box-shadow: 0 1px 1px transparentize(#000, .85);
+	color: map-get($colors, link);
+	font-family: map-get($fonts, sans);
+	@include font-size(14px, false);
+	font-weight: 600;
+	padding: .25em .5em;
+	position: absolute;
+	@include sizing(top, .75);
+	@include sizing(left, .75);
+	text-shadow: 0 1px 0 lighten(map-get($colors, tan), 25%);
+}
+
+.o-tile__title {
+	color: #fff;
+	font-family: map-get($fonts, serif);
+	@include font-size(20px, false);
+	line-height: 1.25;
+	margin: 0;
+	max-width: 75%;
+	position: absolute;
+	@include sizing(bottom, 1);
+	@include sizing(left, .75);
+	text-shadow: 0 1px 2px transparentize(#000, .5);
+}

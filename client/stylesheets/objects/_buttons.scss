@@ -1,0 +1,172 @@
+@mixin button($color: #c6cbd0) {
+	background: linear-gradient(180deg, $color, darken($color, 10%));
+	
+	border-color: darken($color, 3%) darken($color, 8%) darken($color, 15%);
+
+	@if( lightness( darken($color, 5%) ) > 50 ) {
+		color: darken($color, 40%);
+		text-shadow: 0 1px 0 lighten($color, 2%);
+	} @else {
+		color: lighten($color, 40%);
+		text-shadow: 0 -1px 0 darken($color, 15%);
+	}
+	
+	&:before { border-top: 1px lighten($color, 5%) solid; }
+
+	&:hover,
+	&:focus {
+		background: linear-gradient(180deg, lighten($color, 2%), darken($color, 8%));
+		border-color: darken($color, 5%) darken($color, 10%) darken($color, 17%);
+
+		@if( lightness( darken($color, 5%) ) > 50 ) {
+			color: darken($color, 40%);
+		} @else {
+			color: lighten($color, 40%);
+		}
+	}
+	&:active {
+		background: linear-gradient(180deg, darken($color, 10%), $color);
+		border-color: darken($color, 15%) darken($color, 8%) darken($color, 3%);
+	}
+
+	&.disabled {
+		background: linear-gradient(180deg, $color, darken($color, 10%));
+		@if( lightness( darken($color, 5%) ) > 50 ) {
+			color: darken($color, 40%);
+			text-shadow: 0 1px 0 lighten($color, 2%);
+		} @else {
+			color: lighten($color, 40%);
+			text-shadow: 0 -1px 0 darken($color, 15%);
+		}
+	}
+}
+
+.o-btn {
+	display: inline-block;
+	@include sizing(padding-top, .25);
+	@include sizing(padding-bottom, .2);
+	@include sizing(padding-left, .5);
+	@include sizing(padding-right, .5);
+	position: relative;
+	vertical-align: middle;
+
+	border: 1px solid;
+	border-radius: 3px;
+	box-shadow: 0 1px 1px transparentize(#000, .85);
+
+	font-family: map-get($fonts, sans);
+	@include font-size(16px, false);
+	font-weight: 600;
+	letter-spacing: .025em;
+	text-decoration: none;
+	text-transform: uppercase;
+
+	cursor: pointer;
+	user-select: none;
+	-webkit-appearance: none;
+	-webkit-touch-callout: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 1px;
+		right: 1px;
+	}
+
+	&:focus { outline: none; }
+	&:hover,
+	&:focus { text-decoration: none; }
+	&:active {
+		box-shadow: inset 0 1px 1px transparentize(#000, .85),
+					0 1px 1px transparentize(#000, .9);
+
+		@include sizing(padding-top, .275);
+		@include sizing(padding-bottom, .175);
+
+		&:before {
+			top: auto;
+			bottom: 0;
+		}
+	}
+
+	@include button();
+}
+
+
+@each $name, $color in $buttons {
+	.o-btn--#{$name} { @include button($color); }
+}
+
+.o-btn--fullwidth {
+	@include sizing(margin-bottom, .5);
+	text-align: center;
+	width: 100%;
+
+	&:last-child { margin-bottom: 0; }
+}
+
+.o-btn--icon {
+	padding-right: 2.5em !important;
+
+	&:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 18px;
+		@include sizing(right, .5);
+
+		background-position: right center;
+		background-repeat: no-repeat;
+		background-size: 16px;
+	}
+}
+
+.o-btn--outline {
+	background: none !important;
+	box-shadow: none !important;
+	cursor: default !important;
+	text-shadow: none !important;
+
+	&:before { display: none; }
+}
+
+.o-btn--large {
+	@include sizing(padding-top, .35);
+	@include sizing(padding-bottom, .3);
+	@include sizing(padding-left, .75);
+	@include sizing(padding-right, .75);
+
+	&:active {
+		@include sizing(padding-top, .375);
+		@include sizing(padding-bottom, .275);
+	}
+}
+
+.o-btn--sm {
+	@include font-size(14px, false);
+
+	@include sizing(padding-top, .125);
+	@include sizing(padding-bottom, .1);
+	@include sizing(padding-left, .25);
+	@include sizing(padding-right, .25);
+
+	&:active {
+		@include sizing(padding-top, .15);
+		@include sizing(padding-bottom, .075);
+	}
+
+	@include media('>sm') {
+		@include sizing(padding-top, .25);
+		@include sizing(padding-bottom, .2);
+		@include sizing(padding-left, .5);
+		@include sizing(padding-right, .5);
+
+		&:active {
+			@include sizing(padding-top, .275);
+			@include sizing(padding-bottom, .175);
+		}
+	}
+}

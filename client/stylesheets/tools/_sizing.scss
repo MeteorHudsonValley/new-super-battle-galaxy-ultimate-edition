@@ -1,0 +1,4 @@
+@mixin sizing($property, $magnitude: 1) {
+    #{$property}: $magic-number * $magnitude;
+    #{$property}: ($magic-ratio * $magnitude) + rem;
+}
