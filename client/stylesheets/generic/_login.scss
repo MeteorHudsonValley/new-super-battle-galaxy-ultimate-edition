@@ -1,4 +1,22 @@
 #login-buttons {
 	font-family: 'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	
+	text-align: left;
+}
+
+.login-link-text {
+	background: #963B77;
+	padding: .5em 1em;
+	border-radius: 4px;
+	border-color: lighten(#963B77, 10%) lighten(#963B77, 5%) darken(#963B77, 10%);
+	border-style: solid;
+	border-width: 1px;
+	font-weight: 600;
+	text-decoration: none !important;
+	color: lighten(#963B77, 30%);
+	text-shadow: 0 -1px 1px darken(#963B77, 10%);
+
+	&:hover,
+	&:focus {
+		background: lighten(#963B77, 5%);
+	}
 }
