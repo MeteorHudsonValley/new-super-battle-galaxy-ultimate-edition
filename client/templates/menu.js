@@ -7,16 +7,20 @@ Template.Menu.events({
 
   'click .js-challenge-yes': function(evt) {
     evt.preventDefault();
-    Meteor.users.update( { _id: Meteor.userId() },
-      { $set: { "profile.isBusy": true }} );
+
+    var game = {
+      user1: Meteor.userId(),
+      user2: this._id,
+      status: "challenged",
+    };
+    console.log(game);
+    Games.insert (game);
   },
 
 	'click .js-challenge-no': function(ev) {
 		ev.preventDefault();
 		var target = $(ev.currentTarget).parents('.js-challenge');
 		target.removeClass('is-visible');
-    Meteor.users.update( { _id: Meteor.userId() },
-      { $set: { "profile.isBusy": false }} );
 	}
 });
 
@@ -36,6 +40,58 @@ Template.Menu.helpers({
   // context - individual users
   isBusy () {
     return this.profile && this.profile.isBusy;
+  },
+
+  isChallenger (_id) {
+    Meteor.subscribe("challenged_games");
+    var games = Games.find ({ user1: _id, user2: Meteor.userId() });
+console.log('isChallenger', games.fetch());
+    var isChallenger = true;
+
+    games.forEach (function (game) {
+      if (game.status == 'challenged') {
+        // mark current user as busy
+        Meteor.users.update( { _id: Meteor.userId() },
+          { $set: { "profile.isBusy": true }} );
+
+        if (confirm("you've been challenged! Do you accept?")) {
+          // Challenge accepted!
+          Games.update ({_id: game._id}, { $set: {status: "accept"} });
+          return true;
+        } else {
+          // Chellenge denied, sadface.
+          Games.update ({_id: game._id}, { $set: {status: "declined"} });
+          // unlock the user - they are no longer busy!
+          Meteor.users.update( { _id: Meteor.userId() },
+            { $set: { "profile.isBusy": false }} );
+          return false;
+        }
+      }
+    });
+
+    return isChallenger;
+  },
+
+  isChallenging (_id) {
+    Meteor.subscribe("user_games");
+    var games = Games.find ({ user1: Meteor.userId(), user2: _id });
+    var isChallenging = false;
+console.log('isChallenging', games.fetch());
+    games.forEach (function (game) {
+      if (game.status == 'challenged') {
+        Meteor.users.update ({ _id: Meteor.userId() },
+          { $set: { "profile.isBusy": true}} );
+        isChallenging = true;
+      }
+      else if (game.status == 'declined') {
+        //match was declined, unlock user
+        Meteor.users.update ({ _id: Meteor.userId() },
+          { $set: { 'profile.isBusy': false}} );
+        isChallenging = false;
+      }
+    });
+
+    return isChallenging;
   },
 
 });
