@@ -77,3 +77,12 @@
 		}
 	}
 }
+
+.c-menu__players-empty {
+	border-top: 2px darken(#79892F, 5%) solid;
+	color: darken(#79892F, 10%);
+	margin: 0;
+	padding: 1em;
+	text-align: center;
+	font-size: 15px;
+}

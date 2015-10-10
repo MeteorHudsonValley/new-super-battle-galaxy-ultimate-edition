@@ -3,16 +3,20 @@
 	<h2 class="c-menu__title">Available Players:</h2>
 
 	<ul class="o-list-bare c-menu__players">
-		{{#each players}}
-			<li class="{{#if isBusy}}is-busy{{/if}} c-menu__players-item">
-				<span class="c-menu__players-link">{{username}}</span>
-				<div class="c-menu__modal js-challenge">
-					<p class="c-menu__modal-text">Would you like to challenge this player?</p>
-					<a href="#" class="js-challenge-yes">Yes</a>
-					<a href="#" class="js-challenge-no">No</a>
-				</div>
-			</li>
-		{{/each}}
+		{{#if players}}
+			{{#each players}}
+				<li class="{{#if isBusy}}is-busy{{/if}} c-menu__players-item">
+					<span class="c-menu__players-link">{{username}}</span>
+					<div class="c-menu__modal js-challenge">
+						<p class="c-menu__modal-text">Would you like to challenge this player?</p>
+						<a href="#" class="js-challenge-yes">Yes</a>
+						<a href="#" class="js-challenge-no">No</a>
+					</div>
+				</li>
+			{{/each}}
+		{{else}}
+			<p class="c-menu__players-empty">There are no available players.</p>
+		{{/if}}
 	</ul>
 
 </template>

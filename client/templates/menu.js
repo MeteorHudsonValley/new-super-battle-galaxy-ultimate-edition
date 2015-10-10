@@ -20,7 +20,10 @@ Template.Menu.helpers({
       _id: { $ne: Meteor.userId() }
     });
     console.log(players.fetch());
-    return players;
+    if( players.length > 0 ) {
+      return players;
+    }
+    return false;
   },
 
   // context - individual users
