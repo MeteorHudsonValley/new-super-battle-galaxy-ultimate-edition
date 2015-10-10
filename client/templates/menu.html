@@ -6,7 +6,7 @@
 
 		{{#if players}}
 			{{#each players}}
-				<li class="{{#if isBusy}}is-busy{{/if}} {{#if isChallenging}}is-challenging{{/if}} {{#if isChallenger}}is-challenger{{/if}} c-menu__players-item">
+				<li class="{{#if isBusy}}is-busy{{/if}} c-menu__players-item">
 					<span class="c-menu__players-link">{{username}}</span>
 					<div class="c-menu__modal js-challenge">
 						<p class="c-menu__modal-text">Would you like to challenge this player?</p>
@@ -18,6 +18,23 @@
 		{{else}}
 			<p class="c-menu__players-empty">There are no other players online right now!</p>
 		{{/if}}
+
+<div style="display: none;">
+		<p>Outbound Games</p>
+		<ul>
+		{{#each outbound_games}}
+			<li data-alert="true">{{outboundGame}}</li>
+		{{/each}}
+		</ul>
+
+		<p>Inbound Games</p>
+		<ul>
+		{{#each inbound_games}}
+			<li data-alert="true">{{isChallenger}}</li>
+		{{/each}}
+		</ul>
+</div>
+
 	</ul>
 
 </template>
