@@ -3,33 +3,16 @@
 	<h2 class="c-menu__title">Available Players:</h2>
 
 	<ul class="o-list-bare c-menu__players">
-		<li class="c-menu__players-item">
-			<span class="c-menu__players-link">Jordan</span>
-			<div class="c-menu__modal js-challenge">
-				<p class="c-menu__modal-text">Would you like to challenge this player?</p>
-				<a href="#">Yes</a>
-				<a href="#" class="js-challenge-cancel">No</a>
-			</div>
-		</li>
-		<li class="c-menu__players-item is-busy">
-			<span class="c-menu__players-link">Kevin</span>
-		</li>
-		<li class="c-menu__players-item">
-			<span class="c-menu__players-link">Link</span>
-			<div class="c-menu__modal js-challenge">
-				<p class="c-menu__modal-text">Would you like to challenge this player?</p>
-				<a href="#">Yes</a>
-				<a href="#" class="js-challenge-cancel">No</a>
-			</div>
-		</li>
-		<li class="c-menu__players-item">
-			<span class="c-menu__players-link">Zelda</span>
-			<div class="c-menu__modal js-challenge">
-				<p class="c-menu__modal-text">Would you like to challenge this player?</p>
-				<a href="#">Yes</a>
-				<a href="#" class="js-challenge-cancel">No</a>
-			</div>
-		</li>
+		{{#each players}}
+			<li class="{{#if isBusy}}is-busy{{/if}} c-menu__players-item">
+				<span class="c-menu__players-link">{{username}}</span>
+				<div class="c-menu__modal js-challenge">
+					<p class="c-menu__modal-text">Would you like to challenge this player?</p>
+					<a href="#" class="js-challenge-yes">Yes</a>
+					<a href="#" class="js-challenge-no">No</a>
+				</div>
+			</li>
+		{{/each}}
 	</ul>
 
 </template>
