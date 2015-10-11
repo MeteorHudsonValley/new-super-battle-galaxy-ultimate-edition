@@ -25,14 +25,14 @@
 		<p class="c-menu__title">You Started It Log</p>
 		<ul class="o-list-bare c-menu__players">
 		{{#each outboundGames}}
-			<li data-alert="true">You {{outboundGame}} {{user2username}}!</li>
+			<li data-alert="true">Game with {{user2username}} {{outboundGame}}</li>
 		{{/each}}
 		</ul>
 
 		<p class="c-menu__title">They Started it Log</p>
 		<ul class="o-list-bare c-menu__players">
 		{{#each inboundGames}}
-			<li data-alert="true">{{user1username}} {{inboundGame}} You!</li>
+			<li data-alert="true">{{user1username}}'s Game' {{inboundGame}}</li>
 		{{/each}}
 		</ul>
 </div>
