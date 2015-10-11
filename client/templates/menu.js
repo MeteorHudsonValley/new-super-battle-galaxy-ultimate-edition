@@ -13,7 +13,7 @@ Template.Menu.events({
       user2: this._id,
       status: "challenged",
     };
-    console.log(game);
+
     Games.insert (game);
   },
 
@@ -42,20 +42,20 @@ Template.Menu.helpers({
     return this.profile && this.profile.isBusy;
   },
 
-  outbound_games () {
-    Meteor.subscribe("challenged_games");
-    var outbound_games = Games.find({ user1: Meteor.userId() });
-    return outbound_games;
+  outboundGames () {
+    Meteor.subscribe("outbound_games");
+    var outboundGames = Games.find({ user1: Meteor.userId() });
+    return outboundGames;
   },
 
-  inbound_games () {
-    Meteor.subscribe("user_games");
-    var inbound_games = Games.find({ user2: Meteor.userId() });
-    return inbound_games;
+  inboundGames () {
+    Meteor.subscribe("inbound_games");
+    var inboundGames = Games.find({ user2: Meteor.userId() });
+    return inboundGames;
   },
 
-  isChallenger () {
-    var game = Games.findOne ({ _id: this._id, status: 'challenged' });
+  inboundGame () {
+    var game = Games.findOne ({ _id: this._id });
 
     var isChallenger = true;
 
@@ -64,40 +64,51 @@ Template.Menu.helpers({
       Meteor.users.update( { _id: Meteor.userId() },
         { $set: { "profile.isBusy": true }} );
 
-      if (confirm("you've been challenged! Do you accept?")) {
+      var confirmed = window.confirm("You've been challenged! Do you accept?");
+
+      if (confirmed) {
         // Challenge accepted!
-        Games.update ({_id: game._id}, { $set: {status: "accept"} });
-        return true;
+        game.status = "accepted";
+        Games.update ({_id: this._id}, { $set: {status: game.status} });
+        return game.status;
       } else {
         // Chellenge denied, sadface.
-        Games.update ({_id: game._id}, { $set: {status: "declined"} });
+        game.status = "declined";
+        Games.update ({_id: this._id}, { $set: {status: game.status} });
         // unlock the user - they are no longer busy!
         Meteor.users.update( { _id: Meteor.userId() },
           { $set: { "profile.isBusy": false }} );
-        return false;
+        return game.status;
       }
     }
 
-    return isChallenger;
+    return game.status;
   },
 
   outboundGame () {
-    var game = Games.findOne ({ _id: this._id, status: 'challenged' });
+    var game = Games.findOne ({ _id: this._id });
     var isChallenging = false;
 
     if (game.status == 'challenged') {
       Meteor.users.update ({ _id: Meteor.userId() },
         { $set: { "profile.isBusy": true}} );
-      isChallenging = true;
     }
     else if (game.status == 'declined') {
       //match was declined, unlock user
       Meteor.users.update ({ _id: Meteor.userId() },
         { $set: { 'profile.isBusy': false}} );
-      isChallenging = false;
     }
 
-    return isChallenging;
+    return game.status;
+  },
+
+  user1username () {
+    var user = Meteor.users.findOne (this.user1);
+    return (user && user.username) || '';
+  },
+  user2username () {
+    var user = Meteor.users.findOne (this.user2);
+    return (user && user.username) || '';
   },
 
 });

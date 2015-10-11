@@ -19,22 +19,22 @@
 			<p class="c-menu__players-empty">There are no other players online right now!</p>
 		{{/if}}
 
-<div style="display: none;">
-		<p>Outbound Games</p>
-		<ul>
-		{{#each outbound_games}}
-			<li data-alert="true">{{outboundGame}}</li>
+	</ul>
+
+<div style="2px #687628 solid">
+		<p class="c-menu__title">You Started It Log</p>
+		<ul class="o-list-bare c-menu__players">
+		{{#each outboundGames}}
+			<li data-alert="true">You {{outboundGame}} {{user2username}}!</li>
 		{{/each}}
 		</ul>
 
-		<p>Inbound Games</p>
-		<ul>
-		{{#each inbound_games}}
-			<li data-alert="true">{{isChallenger}}</li>
+		<p class="c-menu__title">They Started it Log</p>
+		<ul class="o-list-bare c-menu__players">
+		{{#each inboundGames}}
+			<li data-alert="true">{{user1username}} {{inboundGame}} You!</li>
 		{{/each}}
 		</ul>
 </div>
-
-	</ul>
 
 </template>
